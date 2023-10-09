@@ -3,7 +3,7 @@ require 'administrate/field/belongs_to_search'
 RSpec.describe Administrate::Field::BelongsToSearch do
   let(:page) { :edit }
   let(:post) { create(:post) }
-  let(:field) { Administrate::Field::BelongsToSearch.new(:author, post.author, page) }
+  let(:field) { Administrate::Field::BelongsToSearch.new(:author, post.author, page, resource: post) }
 
   describe '#to_partial_path' do
     it 'returns a partial based on the page being rendered' do
@@ -17,7 +17,7 @@ RSpec.describe Administrate::Field::BelongsToSearch do
     end
 
     context 'when association data is nil' do
-      let(:field) { Administrate::Field::BelongsToSearch.new(:author, nil, page) }
+      let(:field) { Administrate::Field::BelongsToSearch.new(:author, nil, page, resource: post) }
 
       it 'should return the proper class' do
         expect(field.associated_class).to eq Author
