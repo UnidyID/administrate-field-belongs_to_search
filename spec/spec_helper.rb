@@ -3,8 +3,8 @@ require 'coveralls'
 require 'simplecov'
 SimpleCov.start
 
-# start up factory_girl
-require 'factory_girl'
+# start up factory_bot
+require 'factory_bot'
 
 # start db and load migrations and everything
 require 'active_record'
@@ -46,8 +46,8 @@ RSpec.configure do |config|
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
   # configure factory girl
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   config.before(:suite) do
-    FactoryGirl.find_definitions
+    FactoryBot.find_definitions
   end
 end
